@@ -1,0 +1,40 @@
+from __future__ import division, print_function
+import numpy as np
+import sounddevice as sd
+from scipy.io.wavfile import write
+import wavio as wv
+import os 
+import shutil
+import librosa
+
+try:
+    shutil.rmtree('songs')
+except:
+    print("unable to delete previous audio data or no song folder is present")
+
+try: 
+    os.mkdir("songs")
+except: 
+    print("directry is already present")
+
+speech_ouput = []
+dict1 = {0:'Fear',1:'Happiness',2:'Neutral',3:'Sadness'}
+
+def extract_mfcc(filename):
+    y, sr = librosa.load(filename, duration=3, offset=0.5)
+    mfcc = np.mean(librosa.feature.mfcc(y=y, sr=sr, n_mfcc=40).T, axis=0)
+    return mfcc
+
+def audio_classifier(speech_model):
+                filename = "songs/recording"+str(count)+".wav"
+                wv.write(filename, recording, freq, sampwidth=2)
+                
+                feature = extract_mfcc(filename)
+                
+                feature = np.array([feature])
+                feature = feature.reshape(1, 40, 1)
+                
+                audio_result = speech_model.predict(feature)
+                audio_result = np.argmax(audio_result)
+                audio_result = dict1[audio_result]
+                speech_ouput.append(audio_result)
