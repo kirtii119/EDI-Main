@@ -70,7 +70,15 @@ function startCamera() {
 
         // clearGraph();
 
-        timeInterval = setInterval(grab, 400);
+        timeInterval = setInterval(grab, 600);
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/start', true);
+        xhr.onload = function () {
+          if (this.status == 200) {
+            stopCamera();
+          }
+        };
+        xhr.send();
       })
       .catch(function (err) {
         alert('Start Stream: Stream not started.');
@@ -125,7 +133,7 @@ function stopCamera() {
     // };
     xhr.send();
 
-    // drawBarChart();
+    drawBarChart();
   }
 }
 

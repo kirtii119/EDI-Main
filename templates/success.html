@@ -4,15 +4,15 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Question</title>
+    <title>Interview</title>
   </head>
   <body>
-    <h1>Hello</h1>
-    <form action="/interview" method="post">
-      <h3>Start the interview</h3>
-      <button id="start" type="submit">Start</button>
-    </form>
-
-    <script></script>
+    <h3>Finished the interview!!</h3>
+    <p>Interview score: {{interview_score}}</p>
+    <ul>
+      {% for question in questions %}
+      <li>{{question}}</li>
+      {% endfor %}
+    </ul>
   </body>
 </html>

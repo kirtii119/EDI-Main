@@ -1,6 +1,4 @@
-
-from keras.preprocessing import image as im
-
+from keras.utils.image_utils import img_to_array
 import cv2
 import json
 import numpy as np
@@ -29,7 +27,7 @@ def classify(frame, face_detector, model):
             adjust_img = img[y:y+h, x:x+w]  # Crop img to the face
             adjust_img = cv2.resize(adjust_img, (48, 48))  # Resize img to fit the ML model
 
-            img_tensor = im.img_to_array(adjust_img)
+            img_tensor = img_to_array(adjust_img)
             img_tensor = np.expand_dims(img_tensor, axis=0)
 
             img_tensor /= 255  # pixels are in scale of [0, 255]. normalize all pixels in scale of [0, 1]
