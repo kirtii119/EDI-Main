@@ -1,0 +1,31 @@
+Profile: 
+Manomay Jamble Pune Maharashtra India 91 8530817031 LinkedIn Github Kaggle manomayj15 gmail com 
+
+Education: 
+Education Education Vishwakarma Institute of Technology Pune B Tech Artiﬁcial Intelligence and Data Science 2020 24 CGPA 8 93 10 
+
+Experience: 
+Trained, car, neural, Pizza, achieved, Gave, highest, Price, reviews, Networks, network, Regressor, Streamlit, Flask, Analysis, Explored, Experience, Work, Made, Learning, 
+
+Skills: 
+Skills Programming Python Java C SQL Libraries Learn Softwares Databases Technologies Data Science Machine Learning Neural Networks Statistics Analytics Web 
+
+Extra: 
+
+
+Resume matched 52.63157894736842 % with job description
+Candidate Qualified for Interview Round
+
+8    Mention the different languages present in DBMS
+tensor(-0.0585)
+5    Briefly explain FCFS?
+tensor(-0.0169)
+11    Do we consider NULL values the same as that of blank space or zero? 
+6    Explain RDBMS with examples.
+tensor(-0.0508)
+11    Do we consider NULL values the same as that of blank space or zero? 
+tensor(-0.0298)
+6    Explain RDBMS with examples.
+tensor(0.4472)
+0    What is an operating system?
+tensor(0.7213)
