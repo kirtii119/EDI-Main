@@ -28,7 +28,12 @@ interview_score = 0
 asked = []
 
 flag = False
-
+first_question = ""
+first_answer = ""
+x = ""
+count = 0
+data = 0
+driver = 0
 analyticsDict = {
   "angry": 0,
   "disgust": 0,
@@ -155,7 +160,10 @@ def next_question(similarity, x, count, data, driver):
         skill_question(data, difficulty, subject, count, driver)
 
 
-def ask_first_question(data, count, driver):
+def ask_first_question(datal, countl, driverl):
+    data = datal
+    count = countl
+    driver = driverl
     x = data.sample()
     print(x)
     first_question = x['Question'].to_string()
@@ -165,6 +173,10 @@ def ask_first_question(data, count, driver):
     print(first_question)
     asked.append(first_question)
     write_to_file(first_question)
+    return first_question
+
+def first_question_run():
+    
     text_to_speech(first_question)  # ask question
     candidate_response = speech_to_text()
     #speech is recorded and converted to text

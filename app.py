@@ -102,11 +102,11 @@ def start():
     count = 1
     interview_score = 0
 
-    interview_score = utility_functions.ask_first_question(df, count, driver)
-    print(interview_score)
+    firstQuestion = utility_functions.ask_first_question(df, count, driver)
+    # print(interview_score)
     
-    return render_template("success.html", interview_score=interview_score, questions=utility_functions.asked)
-
+    # return render_template("success.html", interview_score=interview_score, questions=utility_functions.asked)
+    return json.dumps(firstQuestion)
 
 if __name__ == '__main__':
 

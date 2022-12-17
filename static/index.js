@@ -75,7 +75,9 @@ function startCamera() {
         xhr.open('POST', '/start', true);
         xhr.onload = function () {
           if (this.status == 200) {
-            stopCamera();
+            objects = JSON.parse(this.response);
+            console.log(typeof objects);
+            document.getElementById('question').innerHTML = objects;
           }
         };
         xhr.send();
