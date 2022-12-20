@@ -48,7 +48,8 @@ def set_question_flag():
     global question_flag
     question_flag = False
 
-def text_to_speech(Text, count):
+def text_to_speech(Text):
+    global count
     # # Text.replace(Text[0], 'Next ') #put where this function is called
     # # Text.replace(Text[1], 'Question')
     Text = Text[2:]
@@ -145,7 +146,8 @@ def start_driver():
     return webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 
 
-def next_question(similarity, x, count, data, driver):
+def next_question(similarity, x, data, driver):
+    global count
     count += 1
     global interview_score
     subjects = list(data['Subject'].unique())
@@ -154,36 +156,37 @@ def next_question(similarity, x, count, data, driver):
         difficulty = 3
         subject = x['Subject'].to_string()
         interview_score += 9
-        ask_question(data, difficulty, subject, count, driver)
+        ask_question(data, difficulty, subject, driver)
     elif 50 < similarity*100 <= 75:
         difficulty = 2
         subject = subjects[random.randint(0, len(subjects)-1)]
         interview_score += 6
-        ask_question(data, difficulty, subject, count, driver)
+        ask_question(data, difficulty, subject, driver)
     elif 25 < similarity*100 <= 50:
         difficulty = 1
         subject = x['Subject'].to_string()
         interview_score += 4
-        ask_question(data, difficulty, subject, count, driver)
+        ask_question(data, difficulty, subject, driver)
     else:
         difficulty = 1
         subject = x['Subject'].to_string()
         # skill_question(x, count, data)
-        skill_question(data, difficulty, subject, count, driver)
+        skill_question(data, difficulty, subject, driver)
 
 
 def ask_first_question(data, c, driver):
+    global count
     count = c
     x = data.sample()
     print(x)
     first_question = x['Question'].to_string()
     first_answer = x['Actual Answer'].to_string()
     if first_question in asked:
-        ask_first_question(data, count, driver)
+        ask_first_question(data, driver)
     print(first_question)
     asked.append(first_question)
     write_to_file(first_question)
-    text_to_speech(first_question, count)  # ask question
+    text_to_speech(first_question)  # ask question
     candidate_response = speech_to_text()
     write_to_file(candidate_response)
     #speech is recorded and converted to text
@@ -194,12 +197,12 @@ def ask_first_question(data, c, driver):
     write_to_file(str(similarity))
     #! call finish_file
     face_functions.append_face_to_file()
-    next_question(similarity, x, count, data, driver)
+    next_question(similarity, x, data, driver)
 
     return interview_score
 
 
-def ask_question(data, difficulty, subject, count, driver):
+def ask_question(data, difficulty, subject, driver):
     global interview_score, question_flag
     if question_flag == False:
         return interview_score
@@ -211,11 +214,11 @@ def ask_question(data, difficulty, subject, count, driver):
         x = temp_data.sample()
         question = x['Question'].to_string()
         if question in asked:
-            ask_question(data, difficulty, subject, count, driver)
+            ask_question(data, difficulty, subject, driver)
         print(question)
         asked.append(question)
         write_to_file(question)
-        text_to_speech(question, count)  # ask question
+        text_to_speech(question)  # ask question
 
         actual_answer = x['Actual Answer'].to_string()
 
@@ -227,11 +230,12 @@ def ask_question(data, difficulty, subject, count, driver):
         write_to_file(str(similarity))
         print(similarity)
         face_functions.append_face_to_file()
-        next_question(similarity, x, count, data, driver)
+        next_question(similarity, x, data, driver)
 
 
-def skill_question(df, difficulty, subject, count, driver):
-    global interview_score, question_flag
+def skill_question(df, difficulty, subject, driver):
+    global interview_score, question_flag, count
+
     if question_flag == False:
         return interview_score
     if count > 5:
@@ -291,7 +295,7 @@ def skill_question(df, difficulty, subject, count, driver):
             print(subject, " - ", question)
             asked.append(question)
             write_to_file(question)
-            text_to_speech(question, count)
+            text_to_speech(question)
             actual_answer = final_answers[index]
             print(actual_answer)
             # get anscandidate_response
@@ -302,11 +306,11 @@ def skill_question(df, difficulty, subject, count, driver):
             similarity = context(actual_answer, candidate_response)
             write_to_file(str(similarity))
             x = df.sample()
-            next_question(similarity, x, count, df, driver)
+            next_question(similarity, x, df, driver)
 
     else:
         print(subject, "Website not found")
-        ask_question(df, difficulty, subject, count, driver)
+        ask_question(df, difficulty, subject, driver)
 
 
 def write_to_file(data):
