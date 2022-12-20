@@ -309,6 +309,17 @@ def success():
         start_file(f1.filename, f2.filename)
         return render_template("success.html", name=f2.filename)
 
+@app.route('/changetabs', methods=['POST','GET'])
+def changetabs():
+    value = request.args.get('value')
+    value = "Number of change Tabs ="+value+"\n"
+    file1 = open("report_file.txt", "a")
+    file1.write(value)
+    file1.write("\n")
+    file1.close()
+
+
+    return jsonify("done")
 
 if __name__ == '__main__':
 

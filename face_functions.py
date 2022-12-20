@@ -26,11 +26,11 @@ def append_face_to_file():
         neutral = (neutral/total) * 100
         nervous = (nervous /total) * 100
 
-    mainstr = "confidence: " + str(round(confidence, 2)) + "%\t nervousness: " + str(round(nervous, 2)) + "%\t neutral: " + str(round(neutral, 2)) + "%"
+    mainstr = "confidence: " + str(round(confidence, 2)) + "%\t nervousness: " + str(round(nervous, 2)) + "%\t neutral: " + str(round(neutral, 2)) + "%\n"
     print(mainstr)  
     print(analyticsDict)
 
-    file1 = open("face_result.txt", "a")
+    file1 = open("report_file.txt", "a")
     file1.write(mainstr)
     file1.write("\n")
     file1.close()

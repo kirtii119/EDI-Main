@@ -144,8 +144,12 @@ function stopCamera() {
     // updateAnalytics();
 
     var xhr = new XMLHttpRequest();
+    changetabs = String(changetabs);
+    url = '/changetabs?value=' + changetabs;
+    xhr.open('GET', url, false);
+    xhr.send();
     // xhr.open('POST', '/finish', false);
-    window.location.replace('http://localhost:5000/finish');
+    window.location.replace('http://localhost:3000/finish');
     // xhr.onload = function () {
     //   if (this.status == 200) {
     //     objects = JSON.parse(this.response);
@@ -155,7 +159,7 @@ function stopCamera() {
     // };
     // xhr.send();
 
-    drawBarChart();
+    // drawBarChart();
   }
 }
 
@@ -223,9 +227,24 @@ function drawBoxes(objects) {
 
     analytics[label] += 1;
 
+    let dlabel = null;
+    if (label == 'happy') {
+      dlabel = 'confident';
+    } else if (
+      label == 'angry' ||
+      label == 'fear' ||
+      label == 'disgust' ||
+      label == 'surprise' ||
+      label == 'sad'
+    ) {
+      dlabel = 'nervous';
+    } else {
+      dlabel = 'neutral';
+    }
+
     adjustCanvas(true);
 
-    drawCtx.fillText(label + ' - ' + score, x + 5, y + 20);
+    drawCtx.fillText(dlabel + ' - ' + score, x + 5, y + 20);
     drawCtx.strokeRect(x, y, width, height);
   });
 }

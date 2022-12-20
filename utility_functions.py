@@ -25,6 +25,7 @@ from pygame import mixer
 from speech_classifier import audio_classifier
 import face_functions
 
+count = 0
 interview_score = 0
 asked = []
 
@@ -155,7 +156,8 @@ def next_question(similarity, x, count, data, driver):
         skill_question(data, difficulty, subject, count, driver)
 
 
-def ask_first_question(data, count, driver):
+def ask_first_question(data, c, driver):
+    count = c
     x = data.sample()
     print(x)
     first_question = x['Question'].to_string()
@@ -183,6 +185,7 @@ def ask_first_question(data, count, driver):
 
 def ask_question(data, difficulty, subject, count, driver):
     global interview_score
+    print(count)
     if count>5:
         return interview_score
     else:
