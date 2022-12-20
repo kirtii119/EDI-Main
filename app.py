@@ -13,6 +13,7 @@ import utility_functions
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
+import face_functions
 
 
 df = pd.read_csv("Question Dataset.csv")
@@ -28,19 +29,6 @@ face_detector = cv2.CascadeClassifier("ml_folder/haarcascade_frontalface_default
 model = load_model('ml_folder/video.h5')
 # model.load_weights('ml_folder/model.h5')
 # model._make_predict_function()
-
-
-analyticsDict = {
-  "angry": 0,
-  "disgust": 0,
-  "fear": 0,
-  "happy": 0,
-  "sad": 0,
-  "surprise": 0,
-  "neutral": 0
-}
-
-
 
 
 @app.route('/')
@@ -60,11 +48,10 @@ def upload_file():
         face_properties = face_classifier.classify(img, face_detector, model)
         # label = face_properties[0]['label']
         # if (label == "happy" or label == "happy" or label == "happy" or label == "happy" or label == "happy" or label == "happy" )
-        if (len(face_properties)!=0 ):
-            analyticsDict[face_properties[0]['label']] +=1
+        face_functions.update_face_analytics(face_properties)
         return json.dumps(face_properties)
 
-@app.route('/finish', methods=['POST'])
+@app.route('/finish', methods=['POST','GET'])
 def finish():
     print("In finish")
     # return redirect(url_for('result'))
@@ -118,6 +105,8 @@ def start():
 
 @app.route('/updatequestion')
 def updatequestion():
+    if (len(utility_functions.asked) == 0):
+        return jsonify("Question will be displayed here")
     question = utility_functions.asked[len(utility_functions.asked)-1]
     return jsonify(question)
 

@@ -42,7 +42,7 @@ h2 > a:hover {
   padding: 5px;
   border: 4px #333 solid;
   border-radius: 10px;
-  float: left;
+  float: center;
 }
 
 .start-stop {
@@ -98,6 +98,12 @@ h2 > a:hover {
   padding-left: 15px;
   margin-top: 15px;
   text-decoration: underline;
+}
+
+#container3 > {
+  padding-left: 15px;
+  margin-top: 15px;
+  float: center;
 }
 
 #container2 > #analytics > p {

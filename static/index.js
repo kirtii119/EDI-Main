@@ -13,6 +13,7 @@ var captureCtx = null;
 var timeInterval = null;
 
 var constraints = null;
+var changetabs = 0;
 
 var analytics = {
   angry: 0,
@@ -55,6 +56,15 @@ function adjustCanvas(bool) {
 function startCamera() {
   // Stop if already playing
   stopCamera();
+  document.addEventListener('visibilitychange', (event) => {
+    if (document.visibilityState == 'visible') {
+      console.log('tab is active');
+    } else {
+      changetabs++;
+      alert("Please don't change tabs. This action will be recorded.");
+      console.log('tab is inactive');
+    }
+  });
 
   // Defaults
   if (constraints === null) constraints = { video: true, audio: false };
@@ -94,7 +104,7 @@ function startCamera() {
   //     document.getElementById('currentQuestion').innerHTML = data.value;
   //   }
   // };
-  
+
   // xhr.send();
 }
 
@@ -126,15 +136,16 @@ function stopCamera() {
     video.pause();
     streamRef.getTracks()[0].stop();
     video.srcObject = null;
-
+    console.log(changetabs);
     stopInterval();
 
     adjustCanvas();
 
-    updateAnalytics();
+    // updateAnalytics();
 
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', '/finish', false);
+    // xhr.open('POST', '/finish', false);
+    window.location.replace('http://localhost:3000/finish');
     // xhr.onload = function () {
     //   if (this.status == 200) {
     //     objects = JSON.parse(this.response);
@@ -142,7 +153,7 @@ function stopCamera() {
     //     drawBoxes(objects);
     //   }
     // };
-    xhr.send();
+    // xhr.send();
 
     drawBarChart();
   }
@@ -230,7 +241,6 @@ function updateQuestion() {
       document.getElementById('question').innerHTML = 'Question: ' + ' ' + question;
       qcount++;
       // document.getElementById('question').innerHTML = question.text;
-      
     }
   };
 

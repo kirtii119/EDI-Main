@@ -23,21 +23,21 @@ import playsound
 import random
 from pygame import mixer 
 from speech_classifier import audio_classifier
+import face_functions
 
 interview_score = 0
 asked = []
 
 flag = False
-
-analyticsDict = {
-  "angry": 0,
-  "disgust": 0,
-  "fear": 0,
-  "happy": 0,
-  "sad": 0,
-  "surprise": 0,
-  "neutral": 0
-}
+# analyticsDict = {
+#   "angry": 0,
+#   "disgust": 0,
+#   "fear": 0,
+#   "happy": 0,
+#   "sad": 0,
+#   "surprise": 0,
+#   "neutral": 0
+# }
 
 def text_to_speech(Text, count):
     # Text.replace(Text[0], 'Next ') #put where this function is called
@@ -65,7 +65,7 @@ def speech_to_text():
     sample_format = pyaudio.paInt16
     channels = 1
     fs = 44100  # frames per channel
-    seconds = 60
+    seconds = 5
 
     filename = "candidate_answer.wav"
 
@@ -175,7 +175,7 @@ def ask_first_question(data, count, driver):
     similarity = context(first_answer, candidate_response)
     write_to_file(str(similarity))
     #! call finish_file
-    res = finish_file()
+    face_functions.append_face_to_file()
     next_question(similarity, x, count, data, driver)
 
     return interview_score
@@ -291,45 +291,50 @@ def write_to_file(data):
     file.close()
 
 
-def finish_file():
-    print(analyticsDict)
-    confidence = 0
-    nervous = 0
-    neutral = 0
+# def finish_file():
+#     print(analyticsDict)
+#     confidence = 0
+#     nervous = 0
+#     neutral = 0
 
-    for key in analyticsDict:
-        if key == "happy":
-            confidence += analyticsDict[key]
-        if key == "sad":
-            nervous += analyticsDict[key]
-        if key == "angry":
-            nervous += analyticsDict[key]
-        if key == "neutral":
-            neutral += analyticsDict[key]
-        if key == "disgust":
-            nervous += analyticsDict[key]
-        if key == "fear":
-            nervous += analyticsDict[key]
-        if key == "surprise":
-            nervous += analyticsDict[key]
+#     for key in analyticsDict:
+#         if key == "happy":
+#             confidence += analyticsDict[key]
+#         if key == "sad":
+#             nervous += analyticsDict[key]
+#         if key == "angry":
+#             nervous += analyticsDict[key]
+#         if key == "neutral":
+#             neutral += analyticsDict[key]
+#         if key == "disgust":
+#             nervous += analyticsDict[key]
+#         if key == "fear":
+#             nervous += analyticsDict[key]
+#         if key == "surprise":
+#             nervous += analyticsDict[key]
     
-    total = confidence + nervous + neutral
-    if(total != 0):
-        confidence = ((confidence + neutral/2)/total) * 100
-        neutral = (neutral/total) * 100
-        nervous = (nervous /total) * 100
+#     total = confidence + nervous + neutral
+#     if(total != 0):
+#         confidence = ((confidence + neutral/2)/total) * 100
+#         neutral = (neutral/total) * 100
+#         nervous = (nervous /total) * 100
 
-    mainstr = "confidence: " + str(confidence) + "%\t nervousness: " + str(nervous) + "%\t neutral: " + str(neutral)
-    print(mainstr)  
-    print(analyticsDict)
+#     mainstr = "confidence: " + str(confidence) + "%\t nervousness: " + str(nervous) + "%\t neutral: " + str(neutral)
+#     print(mainstr)  
+#     print(analyticsDict)
 
-    file1 = open("face_result.txt", "a")
-    file1.write(mainstr)
-    file1.write("\n")
-    file1.close()
+#     file1 = open("face_result.txt", "a")
+#     file1.write(mainstr)
+#     file1.write("\n")
+#     file1.close()
 
-    for key in analyticsDict:
-        analyticsDict[key] = 0
-    print(analyticsDict)
+#     for key in analyticsDict:
+#         analyticsDict[key] = 0
+#     print(analyticsDict)
     
-    return "done"
+#     return "done"
+
+# def update_face_analytics(face_properties):
+#     if (len(face_properties)!=0 ):
+#             analyticsDict[face_properties[0]['label']] +=1
+        

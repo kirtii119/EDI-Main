@@ -7,7 +7,7 @@ import os
 import shutil
 import librosa
 import tensorflow as tf
-speech_model = tf.keras.models.load_model("speech_model.h5")
+speech_model = tf.keras.models.load_model("ml_folder/Speech-Emotion-Recognition-Model.h5")
 
 # try:
 #     shutil.rmtree('songs')
@@ -20,17 +20,26 @@ speech_model = tf.keras.models.load_model("speech_model.h5")
 #     print("directry is already present")
 
 speech_ouput = []
-dict1 = {0:'Fear',1:'Happiness',2:'Neutral',3:'Sadness'}
+audio_result  = 0
+labels = {0:'disgust',1:'happy',2:'sad',3:'neutral',4:'fear',5:'angry'}
+SAMPLE_RATE = 22050
 
 def extract_mfcc(filename): #
-    y, sr = librosa.load(filename, duration=3, offset=0.5) #load audio file
-    mfcc = np.mean(librosa.feature.mfcc(y=y, sr=sr, n_mfcc=40).T, axis=0) #extract mfcc features
+    # y, sr = librosa.load(filename, duration=3, offset=0.5) #load audio file
+    signal, sample_rate = librosa.load(filename, duration=8, sr=SAMPLE_RATE)
+    mfcc = librosa.feature.mfcc(signal, sample_rate, n_mfcc=13, n_fft=2048, hop_length=512)
+    mfcc = mfcc.T
+    # mfcc = np.mean(librosa.feature.mfcc(y=y, sr=sr, n_mfcc=40).T, axis=0) #extract mfcc features
     return mfcc
 
 def audio_classifier():
                 filename = "candidate_answer.wav"
+                try:
+                    shutil.copyfile("candidate_answer.wav", "./originalCandidateAnswer.wav")
+                except:
+                    print("unable to copy file")
                 rate = 22050           # samples per second
-                T = 4                 # sample duration (seconds)
+                T = 8                 # sample duration (seconds)
                 n = int(rate*T)        # number of samples
                 t = np.arange(n)/rate  # grid of time values
 
@@ -44,13 +53,22 @@ def audio_classifier():
                 feature = extract_mfcc(filename) #extract mfcc features 
                 
                 feature = np.array([feature]) #reshape to 3d array
-                feature = feature.reshape(1, 40, 1)
-                
-                audio_result = speech_model.predict(feature) #predicting 
+                # feature = feature.reshape(1, 40, 13)
+                try:
+                    audio_result = speech_model.predict(feature) #predicting 
+                except Exception as e:
+                    print("Expection in speech detection:", e)
+                print(audio_result)
                 audio_result = np.argmax(audio_result)
-
-                
-                audio_result = dict1[audio_result]
+                print(audio_result)
+                audio_result = labels[audio_result]
                 speech_ouput.append(audio_result)
                 print(speech_ouput)
+                file1 = open("speech_result.txt", "a")
+                file1.write(audio_result)
+                file1.write("\n")
+                file1.close()
                 return audio_result
+
+def get_speech_result():
+    return speech_ouput
