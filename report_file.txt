@@ -17,15 +17,7 @@ Resume matched 52.63157894736842 % with job description
 Candidate Qualified for Interview Round
 
 8    Mention the different languages present in DBMS
-tensor(-0.0585)
-5    Briefly explain FCFS?
-tensor(-0.0169)
-11    Do we consider NULL values the same as that of blank space or zero? 
-6    Explain RDBMS with examples.
-tensor(-0.0508)
-11    Do we consider NULL values the same as that of blank space or zero? 
-tensor(-0.0298)
-6    Explain RDBMS with examples.
-tensor(0.4472)
-0    What is an operating system?
-tensor(0.7213)
+7    What is Banker’s algorithm?
+banker's algorithm is a deadlock avoidance and detection algorithm for detecting that among various processes and it final
+tensor(0.8472)
+2    What are the four necessary and sufficient conditions behind the deadlock?

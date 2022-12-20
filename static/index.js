@@ -85,6 +85,17 @@ function startCamera() {
         console.log('Start Stream:', err.name + ': ' + err.message);
       });
   }
+
+  // var xhr = new XMLHttpRequest();
+  // xhr.open('GET', '/update_data', true);
+  // xhr.onload = function () {
+  //   if (this.status == 200) {
+  //     var data = JSON.parse(this.response);
+  //     document.getElementById('currentQuestion').innerHTML = data.value;
+  //   }
+  // };
+  
+  // xhr.send();
 }
 
 function updateAnalytics() {
@@ -123,7 +134,7 @@ function stopCamera() {
     updateAnalytics();
 
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', '/finish', true);
+    xhr.open('POST', '/finish', false);
     // xhr.onload = function () {
     //   if (this.status == 200) {
     //     objects = JSON.parse(this.response);
@@ -207,3 +218,23 @@ function drawBoxes(objects) {
     drawCtx.strokeRect(x, y, width, height);
   });
 }
+
+var qcount = 1;
+function updateQuestion() {
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', '/updatequestion', true);
+
+  xhr.onload = function () {
+    if (this.status == 200) {
+      var question = JSON.parse(this.response);
+      document.getElementById('question').innerHTML = 'Question: ' + ' ' + question;
+      qcount++;
+      // document.getElementById('question').innerHTML = question.text;
+      
+    }
+  };
+
+  xhr.send();
+}
+
+setInterval(updateQuestion, 5000);

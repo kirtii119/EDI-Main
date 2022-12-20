@@ -5,7 +5,7 @@ import numpy as np
 import face_classifier
 import tensorflow as tf
 
-from flask import Flask, render_template,  request
+from flask import Flask, render_template,  request, send_from_directory, redirect, url_for
 from keras.models import model_from_json, load_model
 from flask import Flask, jsonify, request, render_template
 import pandas as pd
@@ -64,9 +64,17 @@ def upload_file():
             analyticsDict[face_properties[0]['label']] +=1
         return json.dumps(face_properties)
 
-@app.route('/finish', methods=['GET'])
-def finish_file():
+@app.route('/finish', methods=['POST'])
+def finish():
+    print("In finish")
+    # return redirect(url_for('result'))
     return render_template("success.html")
+    # return send_from_directory('templates', 'success.html')
+
+
+# @app.route('/result', methods=['GET', 'POST'])
+# def result():
+#     return render_template("success.html")
 
 
 @app.route('/interview', methods=['POST'])
@@ -106,6 +114,12 @@ def start():
     print(interview_score)
     
     return render_template("success.html", interview_score=interview_score, questions=utility_functions.asked)
+
+
+@app.route('/updatequestion')
+def updatequestion():
+    question = utility_functions.asked[len(utility_functions.asked)-1]
+    return jsonify(question)
 
 
 if __name__ == '__main__':

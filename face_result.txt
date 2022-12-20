@@ -1,2 +1,1 @@
 confidence: 0%	 nervousness: 0%	 neutral: 0
-confidence: 0%	 nervousness: 0%	 neutral: 0

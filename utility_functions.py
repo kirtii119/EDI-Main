@@ -39,13 +39,13 @@ analyticsDict = {
   "neutral": 0
 }
 
-def text_to_speech(Text):
-    i = 0
-    Text.replace(Text[0], 'Next ') #put where this function is called
-    Text.replace(Text[1], 'Question')
+def text_to_speech(Text, count):
+    # Text.replace(Text[0], 'Next ') #put where this function is called
+    # Text.replace(Text[1], 'Question')
+    Text = Text[2:]
     tts = 'tts'
     tts = gTTS(text=Text, lang = 'en')
-    file1 = str("hello" + str(i) + ".mp3")
+    file1 = str("hello" + str(count) + ".mp3")
     tts.save(file1)
     # playsound.playsound(file1,True)
     mixer.init()
@@ -65,7 +65,7 @@ def speech_to_text():
     sample_format = pyaudio.paInt16
     channels = 1
     fs = 44100  # frames per channel
-    seconds = 5
+    seconds = 60
 
     filename = "candidate_answer.wav"
 
@@ -165,8 +165,9 @@ def ask_first_question(data, count, driver):
     print(first_question)
     asked.append(first_question)
     write_to_file(first_question)
-    text_to_speech(first_question)  # ask question
+    text_to_speech(first_question, count)  # ask question
     candidate_response = speech_to_text()
+    write_to_file(candidate_response)
     #speech is recorded and converted to text
     #classify the speech using the audio_classifier()
     audio_properties = audio_classifier() 
@@ -182,7 +183,7 @@ def ask_first_question(data, count, driver):
 
 def ask_question(data, difficulty, subject, count, driver):
     global interview_score
-    if count>2:
+    if count>5:
         return interview_score
     else:
         temp_data = data[(data['Difficulty'] == difficulty)]
@@ -193,12 +194,13 @@ def ask_question(data, difficulty, subject, count, driver):
         print(question)
         asked.append(question)
         write_to_file(question)
-        text_to_speech(question)  # ask question
+        text_to_speech(question, count)  # ask question
 
         actual_answer = x['Actual Answer'].to_string()
 
         candidate_response = speech_to_text()
         print(candidate_response)
+        write_to_file(candidate_response)
         audio_properties = audio_classifier()
         similarity = context(actual_answer, candidate_response)
         write_to_file(str(similarity))
@@ -207,7 +209,7 @@ def ask_question(data, difficulty, subject, count, driver):
 
 
 def skill_question(df, difficulty, subject, count, driver):
-    if count > 2:
+    if count > 5:
         return interview_score
     file = open('report_file.txt', 'r', encoding='utf-8', errors='ignore')
     data = file.readlines()
@@ -264,12 +266,13 @@ def skill_question(df, difficulty, subject, count, driver):
             print(subject, " - ", question)
             asked.append(question)
             write_to_file(question)
-            text_to_speech(question)
+            text_to_speech(question, count)
             actual_answer = final_answers[index]
             print(actual_answer)
             # get anscandidate_response
             candidate_response = speech_to_text()
             print(candidate_response)
+            write_to_file(candidate_response)
             audio_properties = audio_classifier()
             similarity = context(actual_answer, candidate_response)
             write_to_file(str(similarity))
