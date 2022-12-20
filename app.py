@@ -237,7 +237,7 @@ def finish():
     print("In finish")
     # return redirect(url_for('result'))
 
-    return render_template("success.html")
+    return render_template("success.html", interview_score = utility_functions.interview_score, questions=utility_functions.asked)
     # return send_from_directory('templates', 'success.html')
 
 
@@ -311,6 +311,7 @@ def success():
 
 @app.route('/changetabs', methods=['POST','GET'])
 def changetabs():
+    utility_functions.set_question_flag()
     value = request.args.get('value')
     value = "Number of change Tabs ="+value+"\n"
     file1 = open("report_file.txt", "a")
