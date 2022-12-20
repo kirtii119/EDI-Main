@@ -145,7 +145,7 @@ function stopCamera() {
 
     var xhr = new XMLHttpRequest();
     // xhr.open('POST', '/finish', false);
-    window.location.replace('http://localhost:3000/finish');
+    window.location.replace('http://localhost:5000/finish');
     // xhr.onload = function () {
     //   if (this.status == 200) {
     //     objects = JSON.parse(this.response);

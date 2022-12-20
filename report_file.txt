@@ -146,3 +146,18 @@ tensor(0.0473)
 
 tensor(-0.0123)
 12    What is an entity-relationship model?
+14    What are the ACID properties in DBMS?
+
+tensor(0.0345)
+0    What is an operating system?
+
+tensor(0.0620)
+19     What is a linked list data structure? 
+
+tensor(0.0361)
+5    Briefly explain FCFS?
+
+tensor(-0.0123)
+3    What are the different states of the process?
+
+tensor(0.0007)
