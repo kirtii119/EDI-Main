@@ -161,3 +161,311 @@ tensor(-0.0123)
 3    What are the different states of the process?
 
 tensor(0.0007)
+12    What is an entity-relationship model?
+
+tensor(0.0036)
+confidence: 50.0%	 nervousness: 0.0%	 neutral: 100.0%
+
+6    Explain RDBMS with examples.
+Number of change Tabs =0
+
+
+tensor(-0.0508)
+3    What are the different states of the process?
+14    What are the ACID properties in DBMS?
+
+tensor(0.0345)
+confidence: 42.86%	 nervousness: 14.29%	 neutral: 85.71%
+
+12    What is an entity-relationship model?
+
+tensor(0.0036)
+6    Explain RDBMS with examples.
+
+tensor(-0.0508)
+5    Briefly explain FCFS?
+
+tensor(-0.0123)
+3    What are the different states of the process?
+
+tensor(0.0007)
+6    Explain RDBMS with examples.
+10    What is fragmentation?
+13    What is the basic function of paging?
+
+tensor(0.0473)
+confidence: 0%	 nervousness: 0%	 neutral: 0%
+
+5    Briefly explain FCFS?
+5 person
+tensor(0.1825)
+0    What is an operating system?
+
+tensor(0.0620)
+3    What are the different states of the process?
+
+tensor(0.0007)
+11    Do we consider NULL values the same as that of blank space or zero? 
+
+tensor(-0.0298)
+Number of change Tabs =0
+
+5    Briefly explain FCFS?
+
+tensor(-0.0123)
+confidence: 0%	 nervousness: 0%	 neutral: 0%
+
+12    What is an entity-relationship model?
+Number of change Tabs =0
+
+
+tensor(0.0036)
+5    Briefly explain FCFS?
+2    What are the four necessary and sufficient conditions behind the deadlock?
+
+tensor(-0.0633)
+confidence: 50.0%	 nervousness: 0.0%	 neutral: 100.0%
+
+3    What are the different states of the process?
+
+tensor(0.0007)
+5    Briefly explain FCFS?
+
+tensor(-0.0123)
+11    Do we consider NULL values the same as that of blank space or zero? 
+
+tensor(-0.0298)
+12    What is an entity-relationship model?
+
+tensor(0.0036)
+Number of change Tabs =0
+
+2    What are the four necessary and sufficient conditions behind the deadlock?
+6    Explain RDBMS with examples.
+10    What is fragmentation?
+
+tensor(-0.0088)
+confidence: 46.67%	 nervousness: 6.67%	 neutral: 93.33%
+
+5    Briefly explain FCFS?
+18    Explain the process behind storing a variable in memory.
+
+tensor(-0.0695)
+confidence: 50.0%	 nervousness: 0.0%	 neutral: 100.0%
+
+6    Explain RDBMS with examples.
+
+tensor(-0.0508)
+19     What is a linked list data structure? 
+
+tensor(0.0361)
+12    What is an entity-relationship model?
+
+tensor(0.0036)
+3    What are the different states of the process?
+
+tensor(0.0007)
+6    Explain RDBMS with examples.
+
+tensor(-0.0508)
+5    Briefly explain FCFS?
+
+tensor(-0.0123)
+0    What is an operating system?
+
+tensor(0.0620)
+6    Explain RDBMS with examples.
+19     What is a linked list data structure? 
+
+tensor(0.0361)
+confidence: 50.0%	 nervousness: 0.0%	 neutral: 100.0%
+
+12    What is an entity-relationship model?
+
+tensor(0.0036)
+3    What are the different states of the process?
+
+tensor(0.0007)
+5    Briefly explain FCFS?
+
+tensor(-0.0123)
+11    Do we consider NULL values the same as that of blank space or zero? 
+
+tensor(-0.0298)
+12    What is an entity-relationship model?
+
+tensor(0.0036)
+5    Briefly explain FCFS?
+Number of change Tabs =0
+
+
+tensor(-0.0123)
+12    What is an entity-relationship model?
+18    Explain the process behind storing a variable in memory.
+
+tensor(-0.0695)
+confidence: 50.0%	 nervousness: 0.0%	 neutral: 100.0%
+
+12    What is an entity-relationship model?
+
+tensor(0.0036)
+11    Do we consider NULL values the same as that of blank space or zero? 
+
+tensor(-0.0298)
+19     What is a linked list data structure? 
+
+tensor(0.0361)
+5    Briefly explain FCFS?
+
+tensor(-0.0123)
+19     What is a linked list data structure? 
+9    What are overlays?
+
+tensor(0.0010)
+confidence: 50.0%	 nervousness: 0.0%	 neutral: 100.0%
+
+19     What is a linked list data structure? 
+13    What is the basic function of paging?
+
+tensor(0.0473)
+confidence: 50.0%	 nervousness: 0.0%	 neutral: 100.0%
+
+11    Do we consider NULL values the same as that of blank space or zero? 
+
+tensor(-0.0298)
+3    What are the different states of the process?
+
+tensor(0.0007)
+0    What is an operating system?
+
+tensor(0.0620)
+19     What is a linked list data structure? 
+
+tensor(0.0361)
+11    Do we consider NULL values the same as that of blank space or zero? 
+
+tensor(-0.0298)
+3    What are the different states of the process?
+3    What are the different states of the process?
+
+tensor(0.0007)
+confidence: 3.7%	 nervousness: 92.59%	 neutral: 7.41%
+
+12    What is an entity-relationship model?
+
+tensor(0.0036)
+19     What is a linked list data structure? 
+
+tensor(0.0361)
+11    Do we consider NULL values the same as that of blank space or zero? 
+
+tensor(-0.0298)
+0    What is an operating system?
+
+tensor(0.0620)
+11    Do we consider NULL values the same as that of blank space or zero? 
+Number of change Tabs =0
+
+
+tensor(-0.0298)
+11    Do we consider NULL values the same as that of blank space or zero? 
+
+tensor(-0.0298)
+19     What is a linked list data structure? 
+
+tensor(0.0361)
+3    What are the different states of the process?
+6    Explain RDBMS with examples.
+
+tensor(-0.0508)
+confidence: 0.0%	 nervousness: 100.0%	 neutral: 0.0%
+
+0    What is an operating system?
+
+tensor(0.0620)
+3    What are the different states of the process?
+
+tensor(0.0007)
+12    What is an entity-relationship model?
+
+tensor(0.0036)
+19     What is a linked list data structure? 
+
+tensor(0.0361)
+3    What are the different states of the process?
+
+tensor(0.0007)
+6    Explain RDBMS with examples.
+Number of change Tabs =0
+
+
+tensor(-0.0508)
+0    What is an operating system?
+7    What is Banker’s algorithm?
+
+tensor(0.0694)
+confidence: 0.0%	 nervousness: 100.0%	 neutral: 0.0%
+
+0    What is an operating system?
+7    What is Banker’s algorithm?
+
+tensor(0.0694)
+confidence: 0%	 nervousness: 0%	 neutral: 0%
+
+5    Briefly explain FCFS?
+
+tensor(-0.0123)
+19     What is a linked list data structure? 
+
+tensor(0.0361)
+6    Explain RDBMS with examples.
+
+tensor(-0.0508)
+12    What is an entity-relationship model?
+
+tensor(0.0036)
+6    Explain RDBMS with examples.
+Number of change Tabs =3
+
+
+tensor(-0.0508)
+5    Briefly explain FCFS?
+18    Explain the process behind storing a variable in memory.
+
+tensor(-0.0695)
+confidence: 0%	 nervousness: 0%	 neutral: 0%
+
+3    What are the different states of the process?
+
+tensor(0.0007)
+12    What is an entity-relationship model?
+
+tensor(0.0036)
+5    Briefly explain FCFS?
+
+tensor(-0.0123)
+6    Explain RDBMS with examples.
+
+tensor(-0.0508)
+3    What are the different states of the process?
+Number of change Tabs =0
+
+18    Explain the process behind storing a variable in memory.
+variable is a type of
+tensor(0.4052)
+confidence: 0%	 nervousness: 0%	 neutral: 0%
+
+19     What is a linked list data structure? 
+linked list data structure
+tensor(0.6824)
+7    What is Banker’s algorithm?
+algorithm
+tensor(0.3436)
+0    What is an operating system?
+operating system
+tensor(0.6844)
+15    What is the Direct Access Method?
+Direct Access method
+tensor(0.6385)
+Number of change Tabs =0
+

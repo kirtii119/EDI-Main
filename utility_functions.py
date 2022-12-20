@@ -24,12 +24,15 @@ import random
 from pygame import mixer 
 from speech_classifier import audio_classifier
 import face_functions
+import pyttsx3
 
 count = 0
 interview_score = 0
 asked = []
 
 flag = False
+# global question_flag 
+question_flag = True
 # analyticsDict = {
 #   "angry": 0,
 #   "disgust": 0,
@@ -40,15 +43,22 @@ flag = False
 #   "neutral": 0
 # }
 
+
+def set_question_flag():
+    global question_flag
+    question_flag = False
+
 def text_to_speech(Text, count):
-    # Text.replace(Text[0], 'Next ') #put where this function is called
-    # Text.replace(Text[1], 'Question')
+    # # Text.replace(Text[0], 'Next ') #put where this function is called
+    # # Text.replace(Text[1], 'Question')
     Text = Text[2:]
     tts = 'tts'
     tts = gTTS(text=Text, lang = 'en')
     file1 = str("hello" + str(count) + ".mp3")
     tts.save(file1)
     # playsound.playsound(file1,True)
+    # tts = gTTS(Text)
+    # tts.save("hello.mp3")
     mixer.init()
     mixer.music.load(file1)
     mixer.music.play()
@@ -56,9 +66,15 @@ def text_to_speech(Text, count):
     while mixer.music.get_busy() == True: #this is to make sure the audio is playing 
         continue
     flag = True
-    print('after')
-    # os.remove(file1)
-    return
+    # print('after')
+    # # os.remove(file1)
+    # return
+    # Text = Text[2:]
+
+    # engine = pyttsx3.init()
+    # engine.setProperty('rate', 150)
+    # engine.say(Text)
+    # engine.runAndWait()
 
 
 def speech_to_text():
@@ -184,7 +200,9 @@ def ask_first_question(data, c, driver):
 
 
 def ask_question(data, difficulty, subject, count, driver):
-    global interview_score
+    global interview_score, question_flag
+    if question_flag == False:
+        return interview_score
     print(count)
     if count>5:
         return interview_score
@@ -213,6 +231,9 @@ def ask_question(data, difficulty, subject, count, driver):
 
 
 def skill_question(df, difficulty, subject, count, driver):
+    global interview_score, question_flag
+    if question_flag == False:
+        return interview_score
     if count > 5:
         return interview_score
     file = open('report_file.txt', 'r', encoding='utf-8', errors='ignore')
