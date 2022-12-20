@@ -208,6 +208,7 @@ def ask_question(data, difficulty, subject, count, driver):
         similarity = context(actual_answer, candidate_response)
         write_to_file(str(similarity))
         print(similarity)
+        face_functions.append_face_to_file()
         next_question(similarity, x, count, data, driver)
 
 

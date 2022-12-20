@@ -257,7 +257,7 @@ function updateQuestion() {
   xhr.onload = function () {
     if (this.status == 200) {
       var question = JSON.parse(this.response);
-      document.getElementById('question').innerHTML = 'Question: ' + ' ' + question;
+      document.getElementById('question').innerHTML = question;
       qcount++;
       // document.getElementById('question').innerHTML = question.text;
     }

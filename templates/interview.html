@@ -10,7 +10,9 @@
     <!-- <link rel="stylesheet" href="{{url_for('static', filename='animation.css')}}" /> -->
     <style>
       body{
-        background-color: #FCFFE7;
+        background-image: url('/static/bgtry.webp'); 
+        background-size: cover;
+        background-color: #ffffff;
       }
 
       h1{
@@ -23,7 +25,7 @@
       }
 
       #container1{
-        margin-left: 3em;
+        margin-left: 10em;
       }
 
       #container2{
@@ -50,11 +52,14 @@
   </head>
 
   <body>
+    <br>
+    <br>
     <h1>INTERVIEW</h1>
     <!-- <h2 id="h2-2" class="jello-horizontal">⚠️ Warning: This works best in desktop ! <a href="#" onclick="removeH2()">❎ Ok, Close</a></h2> -->
     <br />
-    <div align="center">
+    <div>
       <div id="container1">
+        <center>
         <div class="start-stop">
           <a href="#" id="5" onclick="startCamera()">Start Interview</a>
           <a href="#" id="6" onclick="stopCamera()">Stop Interview</a>
@@ -66,6 +71,7 @@
           <video id="videoElement" onloadeddata="adjustCanvas()"></video>
           <canvas id="captureCanvas"></canvas>
         </div>
+      </center>
       </div>
 
       <!-- <div id="container2">
