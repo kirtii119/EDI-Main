@@ -205,7 +205,7 @@ def start_file(job_description, filename):
     report_file.write(" % with job description")
     report_file.write("\n")
 
-    if skill_per > 10:
+    if skill_per > 40:
         report_file.write("Candidate Qualified for Interview Round\n")
         report_file.write("\n")
         report_file.write("\n")
@@ -236,6 +236,7 @@ def upload_file():
 def finish():
     print("In finish")
     # return redirect(url_for('result'))
+
     return render_template("success.html")
     # return send_from_directory('templates', 'success.html')
 
